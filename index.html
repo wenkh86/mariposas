@@ -125,6 +125,20 @@
                 }
             }
         }, 500);
+// Función para reproducir el audio al interactuar con la página
+  function iniciarAudio() {
+    const audio = document.getElementById("background-audio");
+    audio.play().catch(error => {
+      console.log("El navegador bloqueó la reproducción inicial:", error);
+    });
+    // Removemos los eventos para que no se intente reproducir en cada clic posterior
+    document.removeEventListener("click", iniciarAudio);
+    document.removeEventListener("touchstart", iniciarAudio);
+  }
+
+  // Escucha si el usuario hace clic o toca la pantalla en el celular
+  document.addEventListener("click", iniciarAudio);
+  document.addEventListener("touchstart", iniciarAudio);
 
     </script>
 </body>
